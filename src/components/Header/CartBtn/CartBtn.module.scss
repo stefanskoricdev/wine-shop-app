@@ -1,0 +1,33 @@
+@import "../../../assets//colors/colors";
+
+.Cart {
+    height: 80%;
+    border-radius: 2rem;
+    border: none;
+    margin: 0 2%;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    color: $secondaryColor;
+    background-color: $primaryColor;
+    box-shadow: 2px 2px 5px $primaryColor;
+
+    svg {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    p {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 1rem;
+        background-color: $secondaryColor;
+        color: $primaryColor;
+        font-size: 1.5rem;
+        font-weight: 700;
+        border-radius: 100%;
+    }
+}

@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Header from "./components/Header/Header";
+import WelcomeCard from "./components/WelcomeCard/WelcomeCard";
+import WineList from "./components/WineList/WineList";
+import Backdrop from "./components/UI/Backdrop/Backdrop";
+import Modal from "./components/UI/Modal/Modal";
+import styles from "./App.module.scss";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Backdrop>
+        <Modal className={styles.Modal} />
+      </Backdrop>
+      <Header></Header>
+      <main className={styles.Main}>
+        <WelcomeCard />
+        <WineList />
+      </main>
     </div>
   );
 }

@@ -1,0 +1,17 @@
+@import "../../assets/colors/colors";
+
+.WineList {
+    width: 40rem;
+    max-width: 90%;
+    margin: 0 auto;
+    border: 1px solid $secondaryColor;
+    border-radius: 1rem;
+    padding: 1rem 2%;
+    box-shadow: 0 0 20px $secondaryColor;
+    color: $secondaryColor;
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+}

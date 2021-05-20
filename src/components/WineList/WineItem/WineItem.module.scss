@@ -1,0 +1,51 @@
+@import "../../../assets/colors/colors";
+
+.WineItem {
+    list-style: none;
+    border-bottom: 1px solid $secondaryColor;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+        margin: 0;
+        padding: 0;
+    }
+
+    .WineDetails {
+        width: 60%;
+    }
+
+    form {
+        display: flex;
+        flex-flow: column;
+        padding: 0 .2rem;
+
+        input,
+        button {
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2px solid $secondaryColor;
+            color: $primaryColor;
+            border-radius: 1rem;
+        }
+
+        input {
+            height: 1.5rem;
+            margin: 0 .5rem;
+            padding: 0 .2rem;
+
+            label {
+                margin: 0 auto;
+            }
+        }
+
+        button {
+            margin: 2rem auto;
+            width: 5rem;
+            height: 2.5rem;
+            background-color: $secondaryColor;
+            cursor: pointer;
+        }
+    }
+}

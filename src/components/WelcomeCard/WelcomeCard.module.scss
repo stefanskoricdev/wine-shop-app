@@ -1,0 +1,20 @@
+@import "../../assets/colors/colors";
+
+.WelcomeCard {
+    width: 40rem;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    color: $secondaryColor;
+    background-color: $primaryColor;
+    border: 1px solid $secondaryColor;
+    border-radius: 1rem;
+    padding: 1rem 2%;
+    box-shadow: 0 0 20px $secondaryColor;
+    transform: translateY(-7rem);
+    z-index: 4;
+
+    h2 {
+        text-transform: capitalize;
+    }
+}
