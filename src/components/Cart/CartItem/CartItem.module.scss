@@ -1,0 +1,26 @@
+@import "../../../assets/colors/colors";
+
+.CartItem {
+    list-style: none;
+    border-bottom: 1px solid $secondaryColor;
+    padding: 1rem;
+    color: $secondaryColor;
+
+    .Details {
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+            margin: 0;
+        }
+
+        span {
+            margin: 0 1rem;
+            padding: .4rem .5rem;
+            font-weight: 700;
+            border-radius: .4rem;
+            background-color: $secondaryColor;
+            color: $primaryColor;
+        }
+    }
+}

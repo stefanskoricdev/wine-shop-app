@@ -1,10 +1,11 @@
 import styles from "./WineList.module.scss";
 
 import WineItem from "./WineItem/WineItem";
-const WineList = (props) => {
+const WineList = () => {
   const wineList = {
     wines: [
       {
+        id: 1,
         title: "Marques Calado Macabeo",
         details: `Fresh, floral aromas reminiscent 
         of aromatic herbs such as anise and fennel,
@@ -13,6 +14,7 @@ const WineList = (props) => {
         price: 12.95,
       },
       {
+        id: 2,
         title: "Alfredini Pinot Grigio",
         details: `Expect crisp notes of grapefruit, 
         lemon and lime that are chased by a 
@@ -20,11 +22,13 @@ const WineList = (props) => {
         price: 13.95,
       },
       {
+        id: 3,
         title: "'Lifili' 2020, Salice Salentino",
         details: `Lifili is a blend of Negroamaro, Malvasia Nera and Sangiovese. It's made in a warm climate and unoaked, so this is all about the fruit flavour. Expect an intense bouquet of cherry, plum and spice, a full body and balancing acidity. It's best served with cold cuts, red meat and cheese.`,
         price: 18.95,
       },
       {
+        id: 4,
         title: "Peyrassol 'Réserve des Templiers' Rosé 2020, Côtes de Provence",
         details: `Peyrassol was established in the 12th century by the Knights Templar. 
         They used it as a staging post for pilgrims setting off to the 
@@ -41,9 +45,11 @@ const WineList = (props) => {
     ],
   };
 
-  const wineItem = wineList.wines.map((wine) => {
+  const wineItem = wineList.wines.map((wine, i) => {
     return (
       <WineItem
+        key={Math.random() + i}
+        wineId={wine.id}
         wineTitle={wine.title}
         wineDetails={wine.details}
         price={`${wine.price} $`}

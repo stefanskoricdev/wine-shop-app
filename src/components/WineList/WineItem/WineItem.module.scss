@@ -21,6 +21,10 @@
         flex-flow: column;
         padding: 0 .2rem;
 
+        label {
+            width: max-content;
+        }
+
         input,
         button {
             font-weight: 700;
@@ -31,7 +35,7 @@
         }
 
         input {
-            height: 1.5rem;
+            height: 2.5rem;
             margin: 0 .5rem;
             padding: 0 .2rem;
 
@@ -41,11 +45,16 @@
         }
 
         button {
-            margin: 2rem auto;
+            margin: 2rem 0;
             width: 5rem;
             height: 2.5rem;
             background-color: $secondaryColor;
-            cursor: pointer;
+            transition: all 150ms linear;
+        }
+
+        button:hover {
+            background-color: rgb(146, 118, 92);
+            border: 2px solid rgb(146, 118, 92);
         }
     }
 }

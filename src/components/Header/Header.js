@@ -2,11 +2,11 @@ import { Fragment } from "react";
 import Navigation from "./Navigation/Navigation";
 
 import styles from "../Header/Header.module.scss";
-const header = () => {
+const Header = (props) => {
   return (
     <Fragment>
       <header className={styles.Header}>
-        <Navigation />
+        <Navigation cartBtnClicked={props.catBtnClicked} />
         <div className={styles.HeaderBackground}>
           {/*Header background image*/}
         </div>
@@ -14,4 +14,4 @@ const header = () => {
     </Fragment>
   );
 };
-export default header;
+export default Header;

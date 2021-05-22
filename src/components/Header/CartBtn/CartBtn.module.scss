@@ -11,10 +11,12 @@
     color: $secondaryColor;
     background-color: $primaryColor;
     box-shadow: 2px 2px 5px $primaryColor;
+    transition: all 150ms linear;
 
     svg {
         width: 2rem;
         height: 2rem;
+        transition: all 150ms linear;
     }
 
     p {
@@ -26,8 +28,49 @@
         margin: 0 1rem;
         background-color: $secondaryColor;
         color: $primaryColor;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-weight: 700;
         border-radius: 100%;
+        transition: all 150ms linear;
+    }
+}
+
+.Cart:hover {
+    background-color: $secondaryColor;
+    color: $primaryColor;
+
+    svg {
+        fill: $primaryColor;
+    }
+
+    p {
+        color: $secondaryColor;
+        background-color: $primaryColor;
+    }
+}
+
+.Active {
+    animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+    0% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(0.9);
+    }
+
+    30% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }
