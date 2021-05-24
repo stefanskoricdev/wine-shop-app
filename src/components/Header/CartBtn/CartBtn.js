@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./CartBtn.module.scss";
 import CartContext from "../../../store/cartContext";
+
 const CartBtn = () => {
   const ctx = useContext(CartContext);
-  const { totalAmmount, cartBtnClickHandler, wines } = ctx;
+  const { totalAmmount, cartBtnClickHandler } = ctx;
   const [cartBtnIsActive, setCartBtnIsActive] = useState(false);
 
   useEffect(() => {
-    console.log("Is cart btn triggered");
     if (totalAmmount === 0) {
       return;
     }

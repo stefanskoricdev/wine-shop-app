@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Navigation from "./Navigation/Navigation";
-
 import styles from "../Header/Header.module.scss";
+
 const Header = (props) => {
   return (
     <Fragment>

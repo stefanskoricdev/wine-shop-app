@@ -13,8 +13,21 @@
     box-shadow: 0 0 20px $secondaryColor;
     transform: translateY(-7rem);
     z-index: 4;
+    animation: fade-in 500ms ease-in;
 
     h2 {
         text-transform: capitalize;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        transform: translate(-7rem, -7rem);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(0, -7rem);
+        opacity: 1;
     }
 }

@@ -1,6 +1,6 @@
 import styles from "./WelcomeCard.module.scss";
 
-const welcomeCard = () => {
+const WelcomeCard = () => {
   return (
     <div className={styles.WelcomeCard}>
       <h2>Best wines on one place, for you</h2>
@@ -16,4 +16,4 @@ const welcomeCard = () => {
   );
 };
 
-export default welcomeCard;
+export default WelcomeCard;

@@ -1,5 +1,6 @@
 import styles from "./Modal.module.scss";
-const modal = (props) => {
+
+const modal = () => {
   return (
     <div className={styles.Modal}>
       <ul>

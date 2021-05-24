@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import CartContext from "../../../store/cartContext";
-
 import styles from "./WineItem.module.scss";
+
 const WineItem = (props) => {
   const [inputValue, setInputValue] = useState(1);
   const ctx = useContext(CartContext);

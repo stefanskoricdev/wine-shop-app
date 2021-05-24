@@ -5,7 +5,7 @@ import CartContext from "../../store/cartContext";
 
 const Cart = () => {
   const ctx = useContext(CartContext);
-  const { wines: winesList } = ctx;
+  const { wines: winesList, changeAmmount } = ctx;
   const cartItemsList = winesList.map((item, i) => (
     <CartItem
       key={Math.random() + i}
@@ -14,6 +14,7 @@ const Cart = () => {
       details={item.details}
       price={item.price}
       ammount={item.ammount}
+      changeAmmount={changeAmmount}
     />
   ));
   const total = winesList
@@ -21,6 +22,8 @@ const Cart = () => {
     .reduce((accumulator, currValue) => {
       return accumulator + currValue;
     }, 0);
+
+  const hasItems = winesList.length > 0;
 
   return (
     <div className={styles.Cart}>
@@ -30,7 +33,7 @@ const Cart = () => {
           TOTAL: <span>{`$${total.toFixed(2)}`}</span>
         </p>
         <button id="close-modal">CLOSE</button>
-        <button>ORDER</button>
+        <button className={!hasItems ? styles.Inactive : null}>ORDER</button>
       </footer>
     </div>
   );

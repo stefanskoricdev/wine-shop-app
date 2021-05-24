@@ -1,6 +1,7 @@
 import styles from "./Navigation.module.scss";
 import CartBtn from "../CartBtn/CartBtn";
-const navigation = () => {
+
+const Navigation = () => {
   return (
     <nav className={styles.Navigation}>
       <div className={styles.Logo}>
@@ -11,4 +12,4 @@ const navigation = () => {
   );
 };
 
-export default navigation;
+export default Navigation;

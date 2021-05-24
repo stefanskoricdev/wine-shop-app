@@ -6,6 +6,7 @@ import Backdrop from "./components/UI/Backdrop/Backdrop";
 import Cart from "./components/Cart/Cart";
 import CartContext from "./store/cartContext";
 import styles from "./App.module.scss";
+import { add } from "./actions/actions";
 
 const initialState = {
   wines: [],
@@ -14,7 +15,7 @@ const initialState = {
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_ITEM":
+    case "ADD_ITEM": {
       const matchedItemIndex = state.wines.findIndex(
         (wine) => wine.id === action.payload.id
       );
@@ -39,10 +40,52 @@ const cartReducer = (state, action) => {
           },
         ];
       }
+
       return {
         ...state,
         wines: updatedItems,
       };
+    }
+    case "INCREASE_AMMOUNT": {
+      const targetedItemIndex = state.wines.findIndex(
+        (_, i) => i === action.payload
+      );
+      const targetedItem = state.wines[targetedItemIndex];
+      const updatedItem = {
+        ...targetedItem,
+        ammount: targetedItem.ammount + 1,
+      };
+      let updatedItems = [...state.wines];
+      updatedItems[targetedItemIndex] = updatedItem;
+
+      return {
+        ...state,
+        wines: updatedItems,
+      };
+    }
+    case "DECREASE_AMMOUNT": {
+      const targetedItemIndex = state.wines.findIndex(
+        (_, i) => i === action.payload
+      );
+      const targetedItem = state.wines[targetedItemIndex];
+      const updatedItem = {
+        ...targetedItem,
+        ammount: targetedItem.ammount - 1,
+      };
+      let updatedItems = [...state.wines];
+      if (targetedItem.ammount === 1) {
+        updatedItems.splice(targetedItemIndex, 1);
+        // REMOVES ITEM FROM CART IF THERE IS NO AMMOUNT
+      } else {
+        updatedItems[targetedItemIndex] = updatedItem;
+      }
+
+      return {
+        ...state,
+        wines: updatedItems,
+      };
+    }
+
     case "TOTAL_AMMOUNT":
       return {
         ...state,
@@ -52,17 +95,10 @@ const cartReducer = (state, action) => {
       return state;
   }
 };
+
 function App() {
   const [cartBtnClicked, setCartBtnClicked] = useState(false);
   const [cartState, dispatchCart] = useReducer(cartReducer, initialState);
-
-  /* console.log(
-    cartState.wines
-      .map((wine) => wine.ammount)
-      .reduce((accumulator, currValue) => {
-        return accumulator + currValue;
-      }, 0)
-  ); */
 
   useEffect(() => {
     dispatchCart({
@@ -76,9 +112,9 @@ function App() {
   }, [cartState.wines]);
 
   const cartBtnClickHandler = () => {
-    setCartBtnClicked(!cartBtnClicked);
-    console.log("cartBtnClicked");
+    setCartBtnClicked((prevBtnClickedState) => !prevBtnClickedState);
   };
+
   const closeBackdropHandler = (e) => {
     if (e.target.id === "Backdrop" || e.target.id === "close-modal") {
       setCartBtnClicked(false);
@@ -86,11 +122,17 @@ function App() {
   };
 
   const addWineToCartHandler = (item) => {
+    dispatchCart(add("ADD_ITEM", item));
+  };
+
+  const changeAmmount = (e, type) => {
+    const targetedBtn = parseInt(e.target.getAttribute("data-handler"), 10);
     dispatchCart({
-      type: "ADD_ITEM",
-      payload: item,
+      type: type,
+      payload: targetedBtn,
     });
   };
+
   return (
     <CartContext.Provider
       value={{
@@ -99,6 +141,7 @@ function App() {
         addWineToCartHandler,
         wines: cartState.wines,
         totalAmmount: cartState.totalAmmount,
+        changeAmmount,
       }}
     >
       <div className="App">

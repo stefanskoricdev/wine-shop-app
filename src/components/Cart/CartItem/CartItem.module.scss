@@ -5,6 +5,8 @@
     border-bottom: 1px solid $secondaryColor;
     padding: 1rem;
     color: $secondaryColor;
+    display: flex;
+    justify-content: space-between;
 
     .Details {
         display: flex;
@@ -18,9 +20,26 @@
             margin: 0 1rem;
             padding: .4rem .5rem;
             font-weight: 700;
-            border-radius: .4rem;
+            border-radius: .5rem;
             background-color: $secondaryColor;
             color: $primaryColor;
+        }
+    }
+
+    .Ammount {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            width: 2rem;
+            height: 2rem;
+            margin: 1rem .5rem;
+            background-color: $secondaryColor;
+            border-radius: .5rem;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
     }
 }
