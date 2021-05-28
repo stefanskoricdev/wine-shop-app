@@ -5,7 +5,7 @@ import CartContext from "../../store/cartContext";
 
 const Cart = () => {
   const ctx = useContext(CartContext);
-  const { wines: winesList, changeAmmount } = ctx;
+  const { wines: winesList, changeAmount } = ctx;
   const cartItemsList = winesList.map((item, i) => (
     <CartItem
       key={Math.random() + i}
@@ -13,12 +13,12 @@ const Cart = () => {
       title={item.title}
       details={item.details}
       price={item.price}
-      ammount={item.ammount}
-      changeAmmount={changeAmmount}
+      amount={item.amount}
+      changeAmount={changeAmount}
     />
   ));
   const total = winesList
-    .map((wine) => wine.ammount * parseFloat(wine.price, 10))
+    .map((wine) => wine.amount * parseFloat(wine.price, 10))
     .reduce((accumulator, currValue) => {
       return accumulator + currValue;
     }, 0);

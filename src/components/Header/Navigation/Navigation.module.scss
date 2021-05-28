@@ -17,6 +17,14 @@
     }
 
     div {
-        margin: 0 2rem;
+        margin: 0 .5rem;
+    }
+}
+
+@media (min-width: 350px) {
+    .Navigation {
+        div {
+            margin: 0 1rem;
+        }
     }
 }

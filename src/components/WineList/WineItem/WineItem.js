@@ -13,7 +13,7 @@ const WineItem = (props) => {
       title: props.wineTitle,
       details: props.wineDetails,
       price: props.price,
-      ammount: parseInt(inputValue),
+      amount: parseInt(inputValue),
     });
   };
 
@@ -21,8 +21,8 @@ const WineItem = (props) => {
     <li className={styles.WineItem}>
       <div className={styles.WineDetails}>
         <h3>{props.wineTitle}</h3>
-        <p>{props.wineDetails}</p>
-        <p>{props.price}</p>
+        <p className={styles.Details}>{props.wineDetails}</p>
+        <p>Price: {props.price}</p>
       </div>
       <div className="wine-amount">
         <form onSubmit={addToCart}>

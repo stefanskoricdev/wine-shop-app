@@ -7,19 +7,19 @@ const CartItem = (props) => {
         <h3>{props.title}</h3>
         <p>
           {props.price}
-          <span>{props.ammount}</span>
+          <span>{props.amount}</span>
         </p>
       </div>
-      <div className={styles.Ammount}>
+      <div className={styles.Amount}>
         <button
           data-handler={props.id}
-          onClick={(e) => props.changeAmmount(e, "INCREASE_AMMOUNT")}
+          onClick={(e) => props.changeAmount(e, "INCREASE_AMOUNT")}
         >
           +
         </button>
         <button
           data-handler={props.id}
-          onClick={(e) => props.changeAmmount(e, "DECREASE_AMMOUNT")}
+          onClick={(e) => props.changeAmount(e, "DECREASE_AMOUNT")}
         >
           -
         </button>

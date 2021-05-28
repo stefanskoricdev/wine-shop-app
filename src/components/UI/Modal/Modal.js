@@ -7,7 +7,7 @@ const modal = () => {
         <h3>NO ITEMS</h3>
       </ul>
       <p>
-        TOTAL AMMOUNT: <span>0 $</span>
+        TOTAL AMOUNT: <span>0 $</span>
       </p>
       <div>
         <button>CLOSE</button>

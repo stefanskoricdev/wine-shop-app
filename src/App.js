@@ -10,7 +10,7 @@ import { add } from "./actions/actions";
 
 const initialState = {
   wines: [],
-  totalAmmount: 0,
+  totalAmount: 0,
 };
 
 const cartReducer = (state, action) => {
@@ -24,7 +24,7 @@ const cartReducer = (state, action) => {
       if (matchedItem) {
         const updatedItem = {
           ...matchedItem,
-          ammount: matchedItem.ammount + action.payload.ammount,
+          amount: matchedItem.amount + action.payload.amount,
         };
         updatedItems = [...state.wines];
         updatedItems[matchedItemIndex] = updatedItem;
@@ -36,7 +36,7 @@ const cartReducer = (state, action) => {
             title: action.payload.title,
             details: action.payload.details,
             price: action.payload.price,
-            ammount: action.payload.ammount,
+            amount: action.payload.amount,
           },
         ];
       }
@@ -46,14 +46,14 @@ const cartReducer = (state, action) => {
         wines: updatedItems,
       };
     }
-    case "INCREASE_AMMOUNT": {
+    case "INCREASE_AMOUNT": {
       const targetedItemIndex = state.wines.findIndex(
         (_, i) => i === action.payload
       );
       const targetedItem = state.wines[targetedItemIndex];
       const updatedItem = {
         ...targetedItem,
-        ammount: targetedItem.ammount + 1,
+        amount: targetedItem.amount + 1,
       };
       let updatedItems = [...state.wines];
       updatedItems[targetedItemIndex] = updatedItem;
@@ -63,19 +63,19 @@ const cartReducer = (state, action) => {
         wines: updatedItems,
       };
     }
-    case "DECREASE_AMMOUNT": {
+    case "DECREASE_AMOUNT": {
       const targetedItemIndex = state.wines.findIndex(
         (_, i) => i === action.payload
       );
       const targetedItem = state.wines[targetedItemIndex];
       const updatedItem = {
         ...targetedItem,
-        ammount: targetedItem.ammount - 1,
+        amount: targetedItem.amount - 1,
       };
       let updatedItems = [...state.wines];
-      if (targetedItem.ammount === 1) {
+      if (targetedItem.amount === 1) {
         updatedItems.splice(targetedItemIndex, 1);
-        // REMOVES ITEM FROM CART IF THERE IS NO AMMOUNT
+        // REMOVES ITEM FROM CART IF THERE IS NO AMOUNT
       } else {
         updatedItems[targetedItemIndex] = updatedItem;
       }
@@ -86,10 +86,10 @@ const cartReducer = (state, action) => {
       };
     }
 
-    case "TOTAL_AMMOUNT":
+    case "TOTAL_AMOUNT":
       return {
         ...state,
-        totalAmmount: action.payload,
+        totalAmount: action.payload,
       };
     default:
       return state;
@@ -102,9 +102,9 @@ function App() {
 
   useEffect(() => {
     dispatchCart({
-      type: "TOTAL_AMMOUNT",
+      type: "TOTAL_AMOUNT",
       payload: cartState.wines
-        .map((wine) => wine.ammount)
+        .map((wine) => wine.amount)
         .reduce((accumulator, currValue) => {
           return accumulator + currValue;
         }, 0),
@@ -125,7 +125,7 @@ function App() {
     dispatchCart(add("ADD_ITEM", item));
   };
 
-  const changeAmmount = (e, type) => {
+  const changeAmount = (e, type) => {
     const targetedBtn = parseInt(e.target.getAttribute("data-handler"), 10);
     dispatchCart({
       type: type,
@@ -140,8 +140,8 @@ function App() {
         cartBtnClickHandler,
         addWineToCartHandler,
         wines: cartState.wines,
-        totalAmmount: cartState.totalAmmount,
-        changeAmmount,
+        totalAmount: cartState.totalAmount,
+        changeAmount,
       }}
     >
       <div className="App">
