@@ -101,6 +101,17 @@ function App() {
   const [cartState, dispatchCart] = useReducer(cartReducer, initialState);
 
   useEffect(() => {
+    const getData = async () => {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+      const data = await response.json();
+      console.log(data);
+    };
+    getData();
+  }, []);
+
+  useEffect(() => {
     dispatchCart({
       type: "TOTAL_AMOUNT",
       payload: cartState.wines
