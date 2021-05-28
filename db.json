@@ -1,5 +1,5 @@
 {
-    {"wines":[
+    "wines":[
       {
         "id":1,
         "title":"Marques Calado Macabeo",
@@ -24,5 +24,5 @@
         "details":"Peyrassol was established in the 12th century by the Knights Templar. \n      They used it as a staging post for pilgrims setting off to the \n      Holy Land. Today, it’s home to one of the best vineyards in all \n      of Provence. Because the vineyards are at a higher altitude, \n      there’s the perfect balance between warm daytime and cool \n      night-time temperatures to make the grapes incredibly aromatic. \n      Perfect for rosé. It’s peachy and herbal – a heady distillation\n      of the hills where it’s grown. With a wonderful citrusy edge, \n      it’s refreshing but full-bodied. It'll be ideal with salty foods \n      like olives.",
         "price":28.95
       }
-    ]}
+    ]
   } 
