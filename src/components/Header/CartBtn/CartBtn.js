@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./CartBtn.module.scss";
 import CartContext from "../../../store/cartContext";
 
-const CartBtn = () => {
+const CartBtn = (props) => {
   const ctx = useContext(CartContext);
-  const { totalAmount, cartBtnClickHandler } = ctx;
+  const { totalAmount } = ctx;
   const [cartBtnIsActive, setCartBtnIsActive] = useState(false);
 
   useEffect(() => {
@@ -20,9 +20,10 @@ const CartBtn = () => {
       clearTimeout(cartBtnActive);
     };
   }, [totalAmount]);
+
   return (
     <button
-      onClick={cartBtnClickHandler}
+      onClick={props.cartBtnClicked}
       className={
         !cartBtnIsActive
           ? styles.Cart

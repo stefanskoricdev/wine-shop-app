@@ -13,13 +13,13 @@ const CartItem = (props) => {
       <div className={styles.Amount}>
         <button
           data-handler={props.id}
-          onClick={(e) => props.changeAmount(e, "INCREASE_AMOUNT")}
+          onClick={(e) => props.changeAmount(e, "UPDATE_AMOUNT", "increaseBtn")}
         >
           +
         </button>
         <button
           data-handler={props.id}
-          onClick={(e) => props.changeAmount(e, "DECREASE_AMOUNT")}
+          onClick={(e) => props.changeAmount(e, "UPDATE_AMOUNT", "decreaseBtn")}
         >
           -
         </button>

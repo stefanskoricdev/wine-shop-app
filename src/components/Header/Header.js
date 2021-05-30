@@ -6,7 +6,7 @@ const Header = (props) => {
   return (
     <Fragment>
       <header className={styles.Header}>
-        <Navigation cartBtnClicked={props.catBtnClicked} />
+        <Navigation cartBtnClicked={props.cartBtnClicked} />
         <div className={styles.HeaderBackground}>
           {/*Header background image*/}
         </div>
