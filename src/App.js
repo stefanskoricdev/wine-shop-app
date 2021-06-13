@@ -12,7 +12,6 @@ function App() {
 
   const cartBtnClickHandler = () => {
     setCartBtnClicked((prevBtnClickedState) => !prevBtnClickedState);
-    console.log("cartBtnClicked");
   };
 
   const closeBackdropHandler = (e) => {

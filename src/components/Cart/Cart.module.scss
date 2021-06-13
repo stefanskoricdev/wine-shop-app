@@ -13,21 +13,38 @@
     overflow: hidden;
     animation: slide-down 300ms linear;
 
+    button {
+        width: 5.5rem;
+        height: 2.5rem;
+        border-radius: 1rem;
+        background-color: $primaryColor;
+        color: $secondaryColor;
+        font-weight: 700;
+        border: none;
+        margin: 1rem;
+        transition: all 150ms linear;
+    }
+
+    button:hover {
+        background-color: rgba(41, 41, 41, 1);
+        transform: scale(1.05)
+    }
+
     .Inactive {
         display: none;
     }
 
     ul {
-        height: 20rem;
+        height: 30rem;
         overflow: auto;
         margin: 0;
         padding: 1rem;
         border-bottom: 2px solid $secondaryColor;
-
     }
 
     footer {
         width: 100%;
+        min-height: 2rem;
         background-color: $secondaryColor;
 
         p {
@@ -39,23 +56,6 @@
             span {
                 margin: 0 .5rem;
             }
-        }
-
-        button {
-            width: 5.5rem;
-            height: 2.5rem;
-            border-radius: 1rem;
-            background-color: $primaryColor;
-            color: $secondaryColor;
-            font-weight: 700;
-            border: none;
-            margin: 1rem;
-            transition: all 150ms linear;
-        }
-
-        button:hover {
-            background-color: rgba(41, 41, 41, 1);
-            transform: scale(1.05)
         }
     }
 }

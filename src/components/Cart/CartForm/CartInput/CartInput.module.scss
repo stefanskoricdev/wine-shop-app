@@ -1,0 +1,27 @@
+@import "../../../../assets/colors/colors";
+
+label {
+    display: flex;
+    flex-flow: column;
+    margin: .5rem auto;
+    width: 20rem;
+    max-width: 100%;
+
+    input {
+        margin: .5rem 0;
+        height: 2rem;
+        border-radius: .2rem;
+        color: $primaryColor;
+        font-weight: 700;
+        font-size: 1rem;
+        background-color: $secondaryColor;
+        border: none;
+        box-shadow: 2px 2px 5px rgb(95, 80, 65);
+    }
+
+    .Error {
+        color: rgb(180, 33, 33);
+        margin: 0;
+        padding: 0;
+    }
+}
