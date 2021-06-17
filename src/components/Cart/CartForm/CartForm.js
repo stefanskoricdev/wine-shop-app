@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useState, useContext, useEffect, Fragment } from "react";
 import useForm from "../../../hooks/use-form";
 import CartInput from "./CartInput/CartInput";
 import styles from "./CartForm.module.scss";
+import db from "../../../services/firebase";
+import Loader from "../../UI/Loader/Loader";
+import CartContext from "../../../store/cartContext";
+import SubmitMessage from "../../UI/Validation/SubmitMessage/SubmitMessage";
 
 const CartForm = (props) => {
+  const [isFormValid, setIsFormValid] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(null);
+  const [isSubmited, setIsSubmited] = useState(false);
+
+  const ctx = useContext(CartContext);
+  const { clearCart } = ctx;
+
   const {
     value: enteredNameValue,
     hasError: enteredNameHasError,
-    valueIsValid: enteredFirstNameValueIsValid,
     handleChange: enteredNameHandleChange,
     handleBlur: firstNameBlurHandler,
     resetInput: resetFirstName,
@@ -15,7 +26,6 @@ const CartForm = (props) => {
   const {
     value: enteredLastNameValue,
     hasError: enteredLastNameHasError,
-    valueIsValid: enteredLastNameValueIsValid,
     handleChange: enteredLastNameHandleChange,
     handleBlur: lastNameBlurHandler,
     resetInput: resetLastName,
@@ -23,7 +33,6 @@ const CartForm = (props) => {
   const {
     value: enteredEmailValue,
     hasError: enteredEmailHasError,
-    valueIsValid: enteredEmailValueIsValid,
     handleChange: enteredEmailHandleChange,
     handleBlur: emailBlurHandler,
     resetInput: resetEmail,
@@ -31,7 +40,6 @@ const CartForm = (props) => {
   const {
     value: enteredCityValue,
     hasError: enteredCityHasError,
-    valueIsValid: enteredCityValueIsValid,
     handleChange: enteredCityHandleChange,
     handleBlur: cityBlurHandler,
     resetInput: resetCity,
@@ -39,7 +47,6 @@ const CartForm = (props) => {
   const {
     value: enteredStreetValue,
     hasError: enteredStreetHasError,
-    valueIsValid: enteredStreetValueIsValid,
     handleChange: enteredStreetHandleChange,
     handleBlur: streetBlurHandler,
     resetInput: resetStreet,
@@ -47,49 +54,71 @@ const CartForm = (props) => {
   const {
     value: enteredPostalValue,
     hasError: enteredPostalHasError,
-    valueIsValid: enteredPostalValueIsValid,
     handleChange: enteredPostalHandleChange,
     handleBlur: postalBlurHandler,
     resetInput: resetPostal,
   } = useForm((value) => value.trim().length === 5);
 
-  const [isFormValid, setIsFormValid] = useState(true);
+  useEffect(() => {
+    if (
+      enteredNameValue &&
+      enteredLastNameValue &&
+      enteredStreetValue &&
+      enteredCityValue &&
+      enteredEmailValue &&
+      enteredPostalValue
+    ) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  }, [
+    enteredNameValue,
+    enteredLastNameValue,
+    enteredStreetValue,
+    enteredCityValue,
+    enteredEmailValue,
+    enteredPostalValue,
+  ]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formIsValid =
-      enteredFirstNameValueIsValid &&
-      enteredLastNameValueIsValid &&
-      enteredEmailValueIsValid &&
-      enteredCityValueIsValid &&
-      enteredStreetValueIsValid &&
-      enteredPostalValueIsValid;
 
-    if (formIsValid) {
+    if (isFormValid) {
       resetFirstName();
       resetLastName();
       resetEmail();
       resetCity();
       resetStreet();
       resetPostal();
-      console.log("Form Valid!");
     } else {
       setIsFormValid(false);
-      console.log("Form not valid");
       return;
     }
-    console.log({
-      firstName: enteredNameValue,
-      lastName: enteredLastNameValue,
-      email: enteredEmailValue,
-      city: enteredCityValue,
-      street: enteredStreetValue,
-      postalCode: enteredPostalValue,
-    });
+    try {
+      setIsLoading(true);
+      await db.collection("orders").add({
+        firstName: enteredNameValue,
+        lastName: enteredLastNameValue,
+        email: enteredEmailValue,
+        city: enteredCityValue,
+        street: enteredStreetValue,
+        postalCode: enteredPostalValue,
+      });
+      setIsSubmited(true);
+    } catch (err) {
+      setIsError(err.message);
+    }
+    setIsLoading(false);
   };
 
-  return (
-    <form onSubmit={handleSubmit} className={styles.CartForm}>
+  const handleResetCart = () => {
+    clearCart();
+    props.handleCancel();
+  };
+
+  const inputGroup = (
+    <Fragment>
       <h3>Please fill out all fields</h3>
       <CartInput
         htmlFor="first-name"
@@ -162,6 +191,34 @@ const CartForm = (props) => {
         </button>
         <button type="submit">CONFIRM</button>
       </div>
+    </Fragment>
+  );
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className={
+        isFormValid
+          ? styles.CartForm
+          : [styles.CartForm, styles["invalid"]].join(" ")
+      }
+    >
+      {!isLoading && !isError && !isSubmited && inputGroup}
+      {isLoading && <Loader />}
+      {isSubmited && (
+        <SubmitMessage
+          validationMessage={"Your order has been successfully submited!"}
+          handleReset={handleResetCart}
+        />
+      )}
+      {isError && (
+        <SubmitMessage
+          validationMessage={
+            "There was an error submiting your order. Please try again later!"
+          }
+          handleReset={handleResetCart}
+        />
+      )}
     </form>
   );
 };

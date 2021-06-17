@@ -19,9 +19,16 @@ label {
         box-shadow: 2px 2px 5px rgb(95, 80, 65);
     }
 
+
     .Error {
         color: rgb(180, 33, 33);
         margin: 0;
         padding: 0;
+    }
+}
+
+.InputError {
+    input {
+        border: 1px solid rgb(180, 33, 33);
     }
 }

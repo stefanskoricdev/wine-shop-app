@@ -4,7 +4,7 @@ import CartItem from "./CartItem/CartItem";
 import CartContext from "../../store/cartContext";
 import CartForm from "./CartForm/CartForm";
 
-const Cart = () => {
+const Cart = (props) => {
   const [confirmOrder, setConfirmOrder] = useState(false);
   const ctx = useContext(CartContext);
   const { wines: winesList, changeAmount } = ctx;
@@ -50,7 +50,12 @@ const Cart = () => {
   return (
     <div className={styles.Cart}>
       {!confirmOrder && <ul>{cartItemsList}</ul>}
-      {confirmOrder && <CartForm handleCancel={handleCancelConfirmOrder} />}
+      {confirmOrder && (
+        <CartForm
+          handleClose={props.handleCloseBackdrop}
+          handleCancel={handleCancelConfirmOrder}
+        />
+      )}
       <footer>
         <p>
           TOTAL: <span>{`$${total.toFixed(2)}`}</span>

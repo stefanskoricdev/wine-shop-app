@@ -8,7 +8,6 @@ const useForm = (validateValue) => {
 
   const handleChange = (e) => {
     setEnteredValue(e.target.value);
-    console.log(enteredValue);
   };
 
   const handleBlur = () => {
@@ -22,7 +21,6 @@ const useForm = (validateValue) => {
   return {
     value: enteredValue,
     hasError: inputHasError,
-    valueIsValid,
     handleChange,
     handleBlur,
     resetInput,

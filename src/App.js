@@ -15,7 +15,11 @@ function App() {
   };
 
   const closeBackdropHandler = (e) => {
-    if (e.target.id === "Backdrop" || e.target.id === "close-modal") {
+    if (
+      e.target.id === "Backdrop" ||
+      e.target.id === "close-modal" ||
+      e.target.id === "resetCart"
+    ) {
       setCartBtnClicked(false);
     }
   };
@@ -27,7 +31,7 @@ function App() {
           cartBtnIsClicked={cartBtnClicked}
           closeBackdropHandler={closeBackdropHandler}
         >
-          <Cart />
+          <Cart handleCloseBackdrop={closeBackdropHandler} />
         </Backdrop>
         <Header cartBtnClicked={cartBtnClickHandler} />
         <main className={styles.Main}>

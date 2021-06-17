@@ -1,7 +1,10 @@
 import styles from "./CartInput.module.scss";
 const CartInput = (props) => {
   return (
-    <label htmlFor={props.htmlFor}>
+    <label
+      className={props.hasError ? styles.InputError : null}
+      htmlFor={props.htmlFor}
+    >
       {`${props.title} :`}
       <input
         onChange={props.handleChange}

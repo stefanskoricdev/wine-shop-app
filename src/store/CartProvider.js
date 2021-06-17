@@ -76,8 +76,11 @@ const cartReducer = (state, action) => {
         ...state,
         totalAmount: action.payload,
       };
+    case "CLEAR_CART": {
+      return initialState;
+    }
     default:
-      return state;
+      return initialState;
   }
 };
 
@@ -108,11 +111,18 @@ const CartProvider = (props) => {
     });
   };
 
+  const clearCart = () => {
+    dispatchCart({
+      type: "CLEAR_CART",
+    });
+  };
+
   const cartContext = {
     addWineToCartHandler,
     wines: cartState.wines,
     totalAmount: cartState.totalAmount,
     changeAmount,
+    clearCart,
   };
 
   return (
