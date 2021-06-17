@@ -5,14 +5,17 @@
 ## Features:
 - Responsive design,
 - Add, remove item from cart,
-- Animations
-## Features:
-- Search specific item,
-- More items to shop divided into tabs by category
+- Animations,
+- Recieving wine list from firebase,
+- Make order which is sent to firestore database
+
 ## Technology used:
 - React hooks(useReducer, useState, useEffect, useContext)
+- Firebase backend service for dummy backend
 
 In the project directory, you can run:
+
+### `npm init`
 
 ### `npm start`
 
