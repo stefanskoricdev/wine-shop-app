@@ -22,7 +22,8 @@ const cartReducer = (state, action) => {
         };
         updatedItems = [...state.wines];
         updatedItems[matchedItemIndex] = updatedItem;
-      } else {
+      } // If there is allready same item in cart only update ammount
+      else {
         updatedItems = [
           ...state.wines,
           {

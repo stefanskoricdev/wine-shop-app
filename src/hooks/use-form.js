@@ -5,6 +5,7 @@ const useForm = (validateValue) => {
 
   const valueIsValid = validateValue(enteredValue);
   const inputHasError = !valueIsValid && isTouched;
+  // If input field is clicked and empty it will be invalid
 
   const handleChange = (e) => {
     setEnteredValue(e.target.value);

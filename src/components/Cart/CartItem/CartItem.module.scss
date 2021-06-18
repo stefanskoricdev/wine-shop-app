@@ -3,7 +3,6 @@
 .CartItem {
     list-style: none;
     border-bottom: 1px solid $secondaryColor;
-    padding: 1rem;
     color: $secondaryColor;
     display: flex;
     justify-content: space-between;
@@ -11,6 +10,7 @@
     .Details {
         display: flex;
         flex-direction: column;
+        padding: 0 .5rem;
 
         h3 {
             margin: 0;
@@ -18,7 +18,7 @@
 
         span {
             margin: 0 1rem;
-            padding: .4rem .5rem;
+            padding: 0.2rem 1rem;
             font-weight: 700;
             border-radius: .5rem;
             background-color: $secondaryColor;

@@ -26,18 +26,16 @@ const WineItem = (props) => {
       </div>
       <div className="wine-amount">
         <form onSubmit={addToCart}>
-          <label>
-            Amount:
-            <input
-              onChange={(e) => setInputValue(e.target.value)}
-              name="amount"
-              type="number"
-              min="1"
-              max="5"
-              step="1"
-              value={inputValue}
-            />
-          </label>
+          <label>Amount:</label>
+          <input
+            onChange={(e) => setInputValue(e.target.value)}
+            name="amount"
+            type="number"
+            min="1"
+            max="5"
+            step="1"
+            value={inputValue}
+          />
           <button type="submit">+ ADD</button>
         </form>
       </div>
