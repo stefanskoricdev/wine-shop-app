@@ -24,10 +24,11 @@ const WineItem = (props) => {
         <p className={styles.Details}>{props.wineDetails}</p>
         <p>Price: {props.price}</p>
       </div>
-      <div className="wine-amount">
+      <div>
         <form onSubmit={addToCart}>
           <label>Amount:</label>
           <input
+            className={styles.AmountInput}
             onChange={(e) => setInputValue(e.target.value)}
             name="amount"
             type="number"

@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+@import "assets/colors/colors";
 
 * {
-  scrollbar-width: .5rem;
-  scrollbar-color: rgba(170, 142, 116, 1);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(170, 142, 116, 1) $primaryColor;
 }
 
 *::-webkit-scrollbar {

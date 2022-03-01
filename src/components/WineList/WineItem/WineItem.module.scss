@@ -28,8 +28,18 @@
         align-items: center;
         padding: 0 .2rem;
 
+        input[type="number"] {
+            appearance: textfield;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
         label {
-            width: max-content;
+            width: fit-content;
             margin: 1rem auto;
         }
 
@@ -38,11 +48,11 @@
             font-weight: 700;
             font-size: 1rem;
             background-color: $secondaryColor;
-            border: 2px solid $secondaryColor;
+            border: none;
             color: $primaryColor;
             border-radius: 1rem;
             min-height: 2.5rem;
-            width: max-content;
+            width: 6rem;
             margin: 1rem auto;
             text-align: center;
         }
@@ -54,7 +64,6 @@
 
         button:hover {
             background-color: rgb(146, 118, 92);
-            border: 2px solid rgb(146, 118, 92);
         }
     }
 }
